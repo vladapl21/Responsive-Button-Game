@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script src="script.js"></script>
+
+
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: white;
+      background-color: midnightblue;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+      position: relative;
+    }
+
+
+    .button:active {
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+
+
+    .click-counter {
+      color: lightgrey;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 10px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <button class="button"> </button>
+    <div class="click-counter">0 clicks</div>
+  </div>
+
+
+  <script>
+
+    const button = document.querySelector('.button');
+    const clickCounter = document.querySelector('.click-counter');
+    const body = document.querySelector('body');
+
+    let clickCount = 0;
+
+    const stopMessage = document.createElement('div');
+    stopMessage.classList.add('stop-message');
+    stopMessage.style.position = 'absolute';
+    stopMessage.style.top = '75%';
+    stopMessage.style.left = '50%';
+    stopMessage.style.transform = 'translate(-50%, -50%)';
+    stopMessage.style.fontSize = '64px';
+    stopMessage.style.color = 'red';
+    stopMessage.style.textAlign = 'center';
+    stopMessage.textContent = 'no more clicks';
+
+    const ignoreMessage = document.createElement('div');
+    ignoreMessage.textContent = "Don't be tempted to click";
+    ignoreMessage.style.color = 'white';
+    ignoreMessage.style.fontSize = '20px';
+    ignoreMessage.style.textAlign = 'center';
+    ignoreMessage.style.position = 'absolute';
+    ignoreMessage.style.top = '15%';
+    ignoreMessage.style.left = '50%';
+    ignoreMessage.style.transform = 'translate(-50%, -50%)';
+
+    const happyMessage = document.createElement('div');
+    happyMessage.textContent = "Colour change";
+    happyMessage.style.color = 'white';
+    happyMessage.style.fontSize = '20px';
+    happyMessage.style.textAlign = 'center';
+    happyMessage.style.position = 'absolute';
+    happyMessage.style.top = '25%';
+    happyMessage.style.left = '50%';
+    happyMessage.style.transform = 'translate(-50%, -50%)';
+
+    const thirdMessage = document.createElement('div');
+    thirdMessage.textContent = "Another colour change";
+    thirdMessage.style.color = 'white';
+    thirdMessage.style.fontSize = '20px';
+    thirdMessage.style.textAlign = 'center';
+    thirdMessage.style.position = 'absolute';
+    thirdMessage.style.top = '35%';
+    thirdMessage.style.left = '50%';
+    thirdMessage.style.transform = 'translate(-50%, -50%)';
+
+    const fourthMessage = document.createElement('div');
+    fourthMessage.textContent = "Counter will keep going up";
+    fourthMessage.style.color = 'white';
+    fourthMessage.style.fontSize = '20px';
+    fourthMessage.style.textAlign = 'center';
+    fourthMessage.style.position = 'absolute';
+    fourthMessage.style.top = '20%';
+    fourthMessage.style.left = '50%';
+    fourthMessage.style.transform = 'translate(-50%, -50%)';
+
+    const fifthMessage = document.createElement('div');
+    fifthMessage.textContent = "Speed up counter increment";
+    fifthMessage.style.color = 'white';
+    fifthMessage.style.fontSize = '20px';
+    fifthMessage.style.textAlign = 'center';
+    fifthMessage.style.position = 'absolute';
+    fifthMessage.style.top = '30%';
+    fifthMessage.style.left = '50%';
+    fifthMessage.style.transform = 'translate(-50%, -50%)';
+
+
+    document.body.appendChild(ignoreMessage);
+
+
+    button.addEventListener('click', () => {
+      clickCount++;
+
+
+    clickCounter.textContent = `${clickCount} clicks`;
+
+
+    if (clickCount === 25) {
+      button.style.backgroundColor = 'DarkOliveGreen';
+      document.body.appendChild(happyMessage)
+     }
+
+    if (clickCount >= 100) {
+      button.style.backgroundColor = '#6200EE';
+      document.body.appendChild(thirdMessage);
+    }
+
+
+    if (clickCount >= 200) {
+      ignoreMessage.remove()
+      happyMessage.remove()
+      thirdMessage.remove()
+      document.body.appendChild(fourthMessage);
+    }
+
+
+    if (clickCount >= 300) {
+      clickCount += 6;
+      document.body.appendChild(fifthMessage);
+    }
+
+    if (clickCount >= 1005) {
+      button.style.backgroundColor = '#B00020';
+      button.style.left = '100px';
+      fourthMessage.remove();
+      fifthMessage.remove();
+
+      document.body.appendChild(stopMessage);
+    }
+
+    if (clickCount >= 1009) {
+      button.style.left = '';
+      clickCount += 22;
+
+      const stopMessage = document.querySelector('.stop-message');
+      stopMessage.remove();
+    }
+
+    if (clickCount >= 10000) {
+      body.style.backgroundColor = 'lightgrey';
+      clickCounter.textContent = 'stop';
+    }
+
+    if (clickCount >= 11000) {
+      location.reload(true);
+    }
+});
+  </script>
+</body>
+</html>
